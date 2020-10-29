@@ -1,3 +1,6 @@
-This is a repository for "Making Websites With Next.js And Strapi" tutorial series. You can [check out the series here](https://watch-learn.com/series/making-websites-nextjs-and-strapi).
+i want url in url like this http://localhost:3000/movies/?url=https://timesofindia.indiatimes.com/india/coronavirus-india-live-updates-lockdown-extended-in-containment-zones-till-november-30/liveblog/78902091.cms
 
-You can go to [releases](https://github.com/ivandoric/Making-Websites-With-Next.js-And-Strapi/releases) to download the code for most of the videos in the series. Releases are made per episode.
+
+
+
+help me OUT
