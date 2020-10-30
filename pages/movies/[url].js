@@ -35,7 +35,7 @@ const { publicRuntimeConfig } = getConfig();
 
 export async function getServerSideProps(context) {
   const res = await fetch(
-    `${publicRuntimeConfig.API_OG}/metadata/?url=${movie.link}`
+    `${publicRuntimeConfig.API_OG}/metadata/?url=${movie.url}`
   );
   const data = await res.json();
   console.log(data);
