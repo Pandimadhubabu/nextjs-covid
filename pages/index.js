@@ -17,7 +17,7 @@ const Home = ({ movies }) => {
         flexWrap="wrap"
       >
         {movies.map((movie) => (
-          <Box key={movie.index} width={{ _: "100%", md: "30%" }}>
+          <Box key={movie.id} width={{ _: "100%", md: "30%" }}>
             <Card movie={movie} />
           </Box>
         ))}
