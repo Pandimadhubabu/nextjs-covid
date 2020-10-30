@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
 import { rem } from "polished";
 import { Flex, Box } from "reflexbox";
-import Navigation from "components/Navigation";
 import Link from "next/link";
 
-function Header({ isDark, navigation }) {
+function Header({ isDark }) {
   return (
     <HeaderStyled isDark={isDark}>
       <Box variant="container">
