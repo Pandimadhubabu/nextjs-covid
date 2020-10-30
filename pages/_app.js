@@ -6,10 +6,6 @@ import getConfig from 'next/config'
 import fetch from 'isomorphic-unfetch'
 import { DefaultSeo } from 'next-seo'
 import ContextWrapper from 'components/ContextWrapper'
-import Router from 'next/router'
-import { parseCookies  } from 'nookies'
-
-
 import SEO from '../next-seo.config'
 
 function MyApp({ Component, pageProps, navigation }) {
@@ -31,32 +27,11 @@ function MyApp({ Component, pageProps, navigation }) {
 
 const { publicRuntimeConfig } = getConfig()
 
-function redirectUser(ctx, location) {
-    if (ctx.req) {
-        ctx.res.writeHead(302, { Location: location });
-        ctx.res.end();
-    } else {
-        Router.push(location);
-    }
-}
-
-MyApp.getInitialProps = async ({Component, ctx}) => {
-    let pageProps = {}
-    const jwt = parseCookies(ctx).jwt
-
+MyApp.getInitialProps = async () => {
     const res = await fetch(`${publicRuntimeConfig.API_URL}/navigations.json`)
     const navigation = await res.json()
 
-    if (Component.getInitialProps) {
-        pageProps = await Component.getInitialProps(ctx)
-    }
-
-
-
-    return {
-        pageProps,
-        navigation
-    }
+    return { navigation }
 }
 
 export default MyApp
