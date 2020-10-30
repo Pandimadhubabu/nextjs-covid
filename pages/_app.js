@@ -8,7 +8,7 @@ import { DefaultSeo } from 'next-seo'
 
 import SEO from '../next-seo.config'
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, navigation }) {
     console.log(navigation)
 
     return (
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
             <DefaultSeo {...SEO} />
             <ThemeProvider theme={theme}>
                 <GlobalStyles />
-                <Header />
+                <Header navigation={navigation}/>
                 <Component {...pageProps} />
             </ThemeProvider>
         </>
