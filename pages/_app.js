@@ -63,4 +63,4 @@ MyApp.getInitialProps = async ({Component, ctx}) => {
     }
 }
 
-export default appWithTranslation(MyApp)
+export default MyApp
