@@ -1,15 +1,5 @@
-import HeaderContext from '../contexts/HeaderContext'
-import { useState } from 'react'
+import { createContext } from 'react'
 
-function ContextWrapper({children, navigation}) {
-    const [menuItems] = useState(navigation)
-    const [color, toggleColor] = useState(true)
+const HeaderContext = createContext(null)
 
-    return (
-        <HeaderContext.Provider value={{menuItems, color, toggleColor}}>
-            {children}
-        </HeaderContext.Provider>
-    )
-}
-
-export default ContextWrapper
+export default HeaderContext
