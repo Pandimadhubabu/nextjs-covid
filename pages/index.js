@@ -29,7 +29,7 @@ const Home = ({ movies }) => {
 export async function getServerSideProps() {
   const { API_URL } = process.env;
 
-  const res = await fetch(`${API_URL}/news`);
+  const res = await fetch(`${API_URL}/api/news`);
   const data = await res.json();
 
   return {
