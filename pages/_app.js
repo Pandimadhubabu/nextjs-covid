@@ -1,26 +1,35 @@
-import { ThemeProvider } from "emotion-theming";
-import GlobalStyles from "components/GlobalStyles/GlobalStyles";
-import theme from "../theme/theme.js";
-import getConfig from "next/config";
-import { DefaultSeo } from "next-seo";
+import Header from 'components/Header'
+import { ThemeProvider } from 'emotion-theming'
+import GlobalStyles from 'components/GlobalStyles/GlobalStyles'
+import theme from '../theme/theme.js'
+import getConfig from 'next/config'
+import fetch from 'isomorphic-unfetch'
+import { DefaultSeo } from 'next-seo'
 
-import SEO from "../next-seo.config";
+import SEO from '../next-seo.config'
 
 function MyApp({ Component, pageProps }) {
-  console.log(MyApp);
+    console.log(navigation)
 
-  return (
-    <>
-      <DefaultSeo {...SEO} />
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </>
-  );
+    return (
+        <>
+            <DefaultSeo {...SEO} />
+            <ThemeProvider theme={theme}>
+                <GlobalStyles />
+                <Header />
+                <Component {...pageProps} />
+            </ThemeProvider>
+        </>
+    )
 }
 
-const { publicRuntimeConfig } = getConfig();
+const { publicRuntimeConfig } = getConfig()
 
-export default MyApp;
+MyApp.getInitialProps = async () => {
+    const res = await fetch(`${publicRuntimeConfig.API_URL}/news`)
+    const navigation = await res.json()
+
+    return { navigation }
+}
+
+export default MyApp
