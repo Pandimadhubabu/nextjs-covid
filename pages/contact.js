@@ -1,5 +1,5 @@
 function Contact() {
-    return "This is a contact page"
+  return "This is a contact page";
 }
 
-export default Contact
+export default Contact;
