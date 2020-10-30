@@ -51,11 +51,7 @@ MyApp.getInitialProps = async ({Component, ctx}) => {
         pageProps = await Component.getInitialProps(ctx)
     }
 
-    if (!jwt) {
-        if (ctx.pathname === "/payed-articles") {
-            redirectUser(ctx, "/login");
-        }
-    }
+
 
     return {
         pageProps,
