@@ -1,52 +1,50 @@
-import styled from "@emotion/styled";
-import Link from "next/link";
+import { Box, Flex } from "reflexbox";
+import getConfig from "next/config";
+import fetch from "isomorphic-unfetch";
+import { NextSeo } from "next-seo";
 
-function Card({ movie }) {
-  const { API_URL } = process.env;
+function Movie({ movie }) {
+  console.log(movie);
+
+  const SEO = {
+    title: `Next Movies | ${movie.ogTitle}`,
+    description: movie.ogDescription,
+
+    openGraph: {
+      title: `Next Movies | ${movie.ogtitle}`,
+      description: movie.ogDescription,
+    },
+  };
 
   return (
-    <CardStyled>
-      {movie.movie_poster && (
-        <div className="poster">
-          <img src={API_URL + movie.movie_poster.url} alt="" />
-        </div>
-      )}
-      <div className="body">
-        <h3>{movie.title}</h3>
-
-        <Link href="/movies/[url]" as={`/movies/${movie.title}`}>
-          <a>Not working </a>
-        </Link>
-      </div>
-    </CardStyled>
+    <>
+      <NextSeo {...SEO} />
+      <Box variant="container">
+        <Box as="h2" my={40}>
+          {movie.ogTitle}
+        </Box>
+        <Box maxWidth={600}>
+          <img src={movie.ogImage.url} alt={movie.ogTitle} />
+          <p dangerouslySetInnerHTML={{ __html: movie.ogDescription }}></p>
+        </Box>
+      </Box>
+    </>
   );
 }
 
-const CardStyled = styled.div`
-  width: 100%;
-  border: 1px solid #cccccc;
-  margin-top: 50px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+const { publicRuntimeConfig } = getConfig();
 
-  .body {
-    padding: 20px;
+export async function getServerSideProps(context) {
+  const res = await fetch(
+    `${publicRuntimeConfig.API_OG}/metadata/?url=https://www.ndtv.com/world-news/tsunami-after-major-earthquake-hits-greece-turkey-report-2318273`
+  );
+  const data = await res.json();
+  console.log(data);
+  return {
+    props: {
+      movie: data,
+    },
+  };
+}
 
-    h3 {
-      margin-bottom: 20px;
-    }
-
-    p {
-      color: #666666;
-      line-height: 1.5;
-    }
-
-    a {
-      display: inline-block;
-      margin: 20px 0;
-    }
-  }
-`;
-
-export default Card;
+export default Movie;
