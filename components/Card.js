@@ -8,11 +8,11 @@ function Movie({ movie }) {
 
   const SEO = {
     title: `Next Movies | ${movie.ogTitle}`,
-    description: ${movie.ogDescription},
+    description: ${movie.ogDescription}
 
     openGraph: {
       title: `Next Movies | ${movie.ogtitle}`,
-      description: ${movie.ogDescription},
+      description: ${movie.ogDescription}
     },
   };
 
