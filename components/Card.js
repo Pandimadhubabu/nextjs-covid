@@ -15,7 +15,7 @@ function Card({ movie }) {
         <h3>{movie.title}</h3>
 
         <Link href="/movies/[url]" as={`/movies/${movie.title}`}>
-          <a>More about this movie</a>
+          <a>Not working </a>
         </Link>
       </div>
     </CardStyled>

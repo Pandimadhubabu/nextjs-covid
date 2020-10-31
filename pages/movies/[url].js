@@ -11,7 +11,7 @@ function Movie({ movie }) {
     description: movie.ogDescription,
 
     openGraph: {
-      title: `Next Movies | ${movie.title}`,
+      title: `Next Movies | ${movie.ogtitle}`,
       description: movie.ogDescription,
     },
   };
@@ -35,7 +35,7 @@ const { publicRuntimeConfig } = getConfig();
 
 export async function getServerSideProps(context) {
   const res = await fetch(
-    `${publicRuntimeConfig.API_OG}/metadata/?url=${movie.url}`
+    `${publicRuntimeConfig.API_OG}/metadata/?url=https://www.ndtv.com/world-news/tsunami-after-major-earthquake-hits-greece-turkey-report-2318273`
   );
   const data = await res.json();
   console.log(data);
