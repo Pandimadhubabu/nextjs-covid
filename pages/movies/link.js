@@ -4,7 +4,6 @@ import fetch from "isomorphic-unfetch";
 import { NextSeo } from "next-seo";
 
 function Movie({ movie }) {
-  console.log(movie);
 
   const SEO = {
     title: `Next Movies | ${movie.ogTitle}`,
@@ -33,15 +32,21 @@ function Movie({ movie }) {
 
 const { publicRuntimeConfig } = getConfig();
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ query }) {
+  let story;
+  try {
+    const storyId = query.url;
   const res = await fetch(
-    `${publicRuntimeConfig.API_OG}/metadata/?url=${movie.link}`
+    `${publicRuntimeConfig.API_OG}/metadata/?url=${storyId}`
   );
-  const data = await res.json();
-  console.log(data);
+  story = await response.json();
+  } catch (error) {
+    console.log(error);
+    story = null;
+  }
   return {
     props: {
-      movie: data,
+      story,
     },
   };
 }
