@@ -3,15 +3,16 @@ import getConfig from "next/config";
 import fetch from "isomorphic-unfetch";
 import { NextSeo } from "next-seo";
 
-function Movie({ story }) {
+function Movie({ movie }) {
+  console.log(movie);
 
   const SEO = {
-    title: `Next Movies | ${story.ogTitle}`,
-    description: story.ogDescription,
+    title: `Next Movies | ${movie.ogTitle}`,
+    description: movie.ogDescription,
 
     openGraph: {
-      title: `Next Movies | ${story.title}`,
-      description: story.ogDescription,
+      title: `Next Movies | ${movie.title}`,
+      description: movie.ogDescription,
     },
   };
 
@@ -20,10 +21,10 @@ function Movie({ story }) {
       <NextSeo {...SEO} />
       <Box variant="container">
         <Box as="h2" my={40}>
-          {story.ogTitle}
+          {movie.ogTitle}
         </Box>
         <Box maxWidth={600}>
-          <p dangerouslySetInnerHTML={{ __html: story.ogDescription }}></p>
+          <p dangerouslySetInnerHTML={{ __html: movie.ogDescription }}></p>
         </Box>
       </Box>
     </>
@@ -33,20 +34,14 @@ function Movie({ story }) {
 const { publicRuntimeConfig } = getConfig();
 
 export async function getServerSideProps({ query }) {
-  let story;
-  try {
-    const storyId = query.url;
   const res = await fetch(
-    `${publicRuntimeConfig.API_OG}/metadata/?url=${storyId}`
+    `${publicRuntimeConfig.API_OG}/metadata/?url=${query.url}`
   );
-  story = await response.json();
-  } catch (error) {
-    console.log(error);
-    story = null;
-  }
+  const data = await res.json();
+  console.log(data);
   return {
     props: {
-      story,
+      movie: data,
     },
   };
 }
