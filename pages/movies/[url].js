@@ -7,12 +7,14 @@ function Movie({ movie }) {
   console.log(movie);
 
   const SEO = {
-    title: `Next Movies | ${movie.ogTitle}`,
+    title: movie.ogTitle,
     description: movie.ogDescription,
+    image: movie.ogImage.url,
 
     openGraph: {
-      title: `Next Movies | ${movie.ogtitle}`,
+      title: movie.ogTitle,
       description: movie.ogDescription,
+      image: movie.ogImage.url,
     },
   };
 
