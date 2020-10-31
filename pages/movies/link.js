@@ -3,15 +3,15 @@ import getConfig from "next/config";
 import fetch from "isomorphic-unfetch";
 import { NextSeo } from "next-seo";
 
-function Movie({ movie }) {
+function Movie({ story }) {
 
   const SEO = {
-    title: `Next Movies | ${movie.ogTitle}`,
-    description: movie.ogDescription,
+    title: `Next Movies | ${story.ogTitle}`,
+    description: story.ogDescription,
 
     openGraph: {
-      title: `Next Movies | ${movie.title}`,
-      description: movie.ogDescription,
+      title: `Next Movies | ${story.title}`,
+      description: story.ogDescription,
     },
   };
 
@@ -20,10 +20,10 @@ function Movie({ movie }) {
       <NextSeo {...SEO} />
       <Box variant="container">
         <Box as="h2" my={40}>
-          {movie.ogTitle}
+          {story.ogTitle}
         </Box>
         <Box maxWidth={600}>
-          <p dangerouslySetInnerHTML={{ __html: movie.ogDescription }}></p>
+          <p dangerouslySetInnerHTML={{ __html: story.ogDescription }}></p>
         </Box>
       </Box>
     </>
