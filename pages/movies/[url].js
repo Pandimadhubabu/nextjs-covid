@@ -24,6 +24,7 @@ function Movie({ movie }) {
           {movie.ogTitle}
         </Box>
         <Box maxWidth={600}>
+          <img src={movie.ogImage.url} alt={movie.ogTitle} />
           <p dangerouslySetInnerHTML={{ __html: movie.ogDescription }}></p>
         </Box>
       </Box>
