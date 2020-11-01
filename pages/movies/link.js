@@ -1,11 +1,8 @@
 import { Box, Flex } from "reflexbox";
 import getConfig from "next/config";
-import fetch from "isomorphic-unfetch";
 import { NextSeo } from "next-seo";
 
 function Movie({ movie }) {
-  console.log(movie);
-
   const SEO = {
     title: `Next Movies | ${movie.ogTitle}`,
     description: movie.ogDescription,
@@ -37,12 +34,9 @@ export async function getServerSideProps({ query }) {
   const res = await fetch(
     `${publicRuntimeConfig.API_OG}/metadata/?url=${query.url}`
   );
-  const data = await res.json();
-  console.log(data);
+  const movie = await res.json();
   return {
-    props: {
-      movie: data,
-    },
+    props: { movie },
   };
 }
 
