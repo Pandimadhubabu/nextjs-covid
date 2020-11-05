@@ -1,6 +1,6 @@
-import fetch from "pages/Details/isomorphic-unfetch";
-import Error from "pages/Details/next/error";
-import { NextSeo } from "pages/Details/next-seo";
+
+import Error from "next/error";
+import { NextSeo } from "next-seo";
 
 export async function getServerSideProps({ query }) {
   let story;
