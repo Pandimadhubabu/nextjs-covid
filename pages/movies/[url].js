@@ -1,6 +1,5 @@
-import { Box, Flex } from "reflexbox";
+
 import getConfig from "next/config";
-import fetch from "isomorphic-unfetch";
 import { NextSeo } from "next-seo";
 
 function Movie({ movie }) {
@@ -21,15 +20,15 @@ function Movie({ movie }) {
   return (
     <>
       <NextSeo {...SEO} />
-      <Box variant="container">
-        <Box as="h2" my={40}>
+      <div variant="container">
+        <div as="h2" my={40}>
           {movie.ogTitle}
-        </Box>
-        <Box maxWidth={600}>
+        </div>
+        <div maxWidth={600}>
           <img src={movie.ogImage.url} alt={movie.ogTitle} />
           <p dangerouslySetInnerHTML={{ __html: movie.ogDescription }}></p>
-        </Box>
-      </Box>
+        </div>
+      </div>
     </>
   );
 }
