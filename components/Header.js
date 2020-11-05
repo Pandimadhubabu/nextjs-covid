@@ -13,7 +13,7 @@ function Header({ isDark, navigation }) {
             <Link href="/">
               <a>
                 <img src="/images/logo.svg" alt="Sites logo" />
-                <span className="logo-text">Next Movies</span>
+                <span className="logo-text">Covid19 News</span>
               </a>
             </Link>
           </div>

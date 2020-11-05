@@ -1,21 +1,21 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
 
-function Card({ movie }) {
+function Card({ news }) {
   const { API_URL } = process.env;
 
   return (
     <CardStyled>
-      {movie.movie_poster && (
-        <div className="poster">
-          <img src={API_URL + movie.movie_poster.url} alt="" />
+      {news.news_img && (
+        <div className="image">
+          <img src={API_URL + news.news_img.url} alt="" />
         </div>
       )}
       <div className="body">
-        <h3>{movie.title}</h3>
+        <h3>{news.title}</h3>
 
-        <Link href={`/movies/link?url=${movie.url}`}>
-          <a>{movie.index} </a>
+        <Link href={`/Details/link?url=${news.url}`}>
+          <a> Details </a>
         </Link>
       </div>
     </CardStyled>
@@ -24,8 +24,8 @@ function Card({ movie }) {
 
 const CardStyled = styled.div`
   width: 100%;
-  border: 1px solid #cccccc;
-  margin-top: 50px;
+  border: 1.5px solid #cccccc;
+  margin-top: 20px;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

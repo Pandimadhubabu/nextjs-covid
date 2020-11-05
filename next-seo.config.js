@@ -1,15 +1,15 @@
 export default {
-  title: "Next Movies",
-  description: "Database of movies created with Next.js and Strapi",
+  title: "Covid19 News",
+  description: "Database of Covid19 created with Next.js and Strapi",
   openGraph: {
     type: "website",
     locale: "en_IE",
-    url: "https://www.nextmovies.test",
-    site_name: "Next Movies",
+    url: "https://www.Covid19News.test",
+    site_name: "Covid19 News",
   },
   twitter: {
-    handle: "@ivan_doric",
-    site: "@WatchLearnTuts",
+    handle: "@i",
+    site: "@Wa",
     cardType: "summary_large_image",
   },
 };

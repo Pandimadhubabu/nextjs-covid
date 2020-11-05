@@ -1,14 +1,11 @@
-import fetch from "isomorphic-unfetch";
 import Card from "components/Card";
 import { Flex, Box } from "reflexbox";
 
-const Home = ({ movies }) => {
-  
-
+const Home = ({ news19 }) => {
   return (
     <Box variant="container">
-      <Box my={40} as="h2">
-        Latest Movies
+      <Box my={20} as="h2">
+        Covid19 News
       </Box>
       <Flex
         justifyContent="space-between"
@@ -16,9 +13,9 @@ const Home = ({ movies }) => {
         mb={100}
         flexWrap="wrap"
       >
-        {movies.map((movie) => (
-          <Box key={movie.index} width={{ _: "100%", md: "30%" }}>
-            <Card movie={movie} />
+        {news19.map((news) => (
+          <Box key={news.index} width={{ _: "100%", md: "30%" }}>
+            <Card news={news} />
           </Box>
         ))}
       </Flex>
@@ -34,7 +31,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      movies: data,
+      news19: data,
     },
   };
 }
