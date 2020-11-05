@@ -36,9 +36,9 @@ function Movie({ movie }) {
 
 const { publicRuntimeConfig } = getConfig();
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ query }) {
   const res = await fetch(
-    `${publicRuntimeConfig.API_OG}/metadata/?url=https://www.ndtv.com/world-news/tsunami-after-major-earthquake-hits-greece-turkey-report-2318273`
+    `${publicRuntimeConfig.API_OG}/metadata/?url=${query.url}`
   );
   const data = await res.json();
   console.log(data);
