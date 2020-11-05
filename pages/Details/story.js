@@ -1,4 +1,3 @@
-
 import Error from "next/error";
 import { NextSeo } from "next-seo";
 

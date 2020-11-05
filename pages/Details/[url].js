@@ -1,5 +1,5 @@
-import getConfig from "pages/Details/next/config";
-import { NextSeo } from "pages/Details/next-seo";
+import getConfig from "next/config";
+import { NextSeo } from "next-seo";
 
 function Movie({ movie }) {
   const SEO = {
