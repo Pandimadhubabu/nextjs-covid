@@ -3,7 +3,7 @@ import Card from "components/Card";
 import { Flex, Box } from "reflexbox";
 
 const Home = ({ movies }) => {
-  console.log(movies);
+  
 
   return (
     <Box variant="container">
