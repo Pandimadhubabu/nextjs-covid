@@ -3,12 +3,12 @@ import { NextSeo } from "next-seo";
 
 function Details({ dnews }) {
   const SEO = {
-    title: `Covid19 | ${dnews.ogTitle}`,
+    title: `Covid19 News | ${dnews.ogTitle}`,
     description: dnews.ogDescription,
     image: dnews.ogImage.url,
 
     openGraph: {
-      title: `Covid19 | ${dnews.ogTitle}`,
+      title: `Covid19 News | ${dnews.ogTitle}`,
       description: dnews.ogDescription,
       image: dnews.ogImage.url,
     },
